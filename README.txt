@@ -149,7 +149,7 @@ TROUBLESHOOTING
   the custom domain setting must match exactly.
 - Changes not appearing: check the repository's Actions tab, then hard
   refresh the page (Ctrl+F5) once the deploy finishes.
-- Email still works: marqueesoundstudios@gmail.com is a Gmail account,
+- Email still works: marqueesoundstudio@gmail.com is a Gmail account,
   so cancelling Squarespace does not affect it. It is linked in the
   footer.
 - Mailto link does nothing: the visitor's device needs a default mail
