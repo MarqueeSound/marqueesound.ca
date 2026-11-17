@@ -11,6 +11,8 @@ logo.png      The Marquee Sound logo, copied from the old site archive.
 favicon.ico   The old site's favicon, copied from the old site archive.
 CNAME         Tells GitHub Pages the custom domain is www.marqueesound.ca.
 .nojekyll     Tells GitHub Pages to serve the files as-is (no Jekyll build).
+.gitignore    Ignores Windows/macOS junk files.
+README.txt    This file.
 
 To preview locally, just double-click index.html. It works offline.
 
@@ -38,44 +40,28 @@ og:image:height values in the <head> to match.
 
 PUBLISH ON GITHUB PAGES
 -----------------------
-1. The repository already exists and is empty:
-   https://github.com/MarqueeSound/marqueesound.ca
-   It is public, so GitHub Pages is available on the free plan.
+The repository already exists and the files are committed to its main
+branch:
 
-2. Upload every file in this folder to the repository root:
-   index.html, logo.png, favicon.ico, CNAME, .nojekyll.
-   On github.com use "Add file > Upload files", drag them in, then
-   "Commit changes". The files must sit at the root, not in a subfolder.
-   If your file browser hides .nojekyll, enable "show hidden files".
+  https://github.com/MarqueeSound/marqueesound.ca
 
-   Command-line alternative instead of the web upload, run from this
-   folder after creating the empty repository:
-
-     git init -b main
-     git add .
-     git commit -m "Add coming soon page"
-     git remote add origin https://github.com/MarqueeSound/marqueesound.ca.git
-     git push -u origin main
-
-   If git is not installed, use the web upload above.
-
-3. In the repository: Settings > Pages.
+1. Open that repository on GitHub and go to Settings > Pages.
    - Source: "Deploy from a branch"
    - Branch: "main", folder "/ (root)"
    - Save. Wait for the "Your site is live" message.
 
-4. Check the temporary URL first:
+2. Check the temporary URL first:
    https://marqueesound.github.io/marqueesound.ca/
    It should look identical to the local preview.
 
-5. Add the custom domain:
+3. Add the custom domain:
    - On the same Pages screen, under "Custom domain", enter
      www.marqueesound.ca and click Save.
    - The CNAME file already contains this value; keep them identical.
    - Wait for the DNS check to pass, then tick "Enforce HTTPS".
      The certificate can take from a few minutes up to an hour.
 
-6. Point easyDNS at GitHub. In easyDNS: MANAGE > DNS SETTINGS, then use
+4. Point easyDNS at GitHub. In easyDNS: MANAGE > DNS SETTINGS, then use
    the Modular Editor or the New DNS Editor.
 
    First delete any existing A or CNAME records for "@" and "www" that
@@ -103,15 +89,36 @@ PUBLISH ON GITHUB PAGES
    - If the old records have a long TTL, lower it a day before the
      switch so the change propagates faster.
 
-7. Wait for DNS to propagate (often minutes, up to 24-48 hours), then
+5. Wait for DNS to propagate (often minutes, up to 24-48 hours), then
    test in a private/incognito window:
 
      https://www.marqueesound.ca
      https://marqueesound.ca    (should redirect to www)
      http:// versions            (should redirect to https)
 
-8. Only after the new page is confirmed live on the domain, cancel the
+6. Only after the new page is confirmed live on the domain, cancel the
    Squarespace subscription.
+
+
+MAKING FUTURE EDITS
+-------------------
+This folder is already a git repository connected to:
+
+  https://github.com/MarqueeSound/marqueesound.ca.git
+
+Option A - GitHub Desktop (installed):
+  1. File > Add local repository
+  2. Choose this coming-soon folder
+  3. Edit index.html, then review the change in the Changes tab
+  4. Write a summary and click "Commit to main"
+  5. Click "Push origin"
+
+Option B - command line, if Git is installed:
+  git add .
+  git commit -m "Update page"
+  git push
+
+GitHub Pages usually redeploys within a minute or two of a push.
 
 
 CHECKING THE DNS
@@ -136,6 +143,8 @@ TROUBLESHOOTING
   then toggle "Enforce HTTPS" again.
 - Site loads at github.io but not the custom domain: the CNAME file and
   the custom domain setting must match exactly.
+- Changes not appearing: check the repository's Actions tab, then hard
+  refresh the page (Ctrl+F5) once the deploy finishes.
 - Email still works: marqueesoundstudios@gmail.com is a Gmail account,
   so cancelling Squarespace does not affect it. It is linked in the
   footer.
