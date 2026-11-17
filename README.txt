@@ -139,6 +139,10 @@ TROUBLESHOOTING
   root and Pages is set to branch "main", folder "/ (root)".
 - "Domain's DNS record could not be retrieved": wait a few minutes and
   re-check. Remove conflicting A/CNAME records for @ and www.
+- InvalidCNAMEError: www.marqueesound.ca still resolves to something
+  other than marqueesound.github.io (usually ext-cust.squarespace.com).
+  Replace the www CNAME at easyDNS. The www host must have only that
+  one CNAME record - no A, AAAA or TXT records alongside it.
 - Certificate not ready: wait up to an hour after the DNS check passes,
   then toggle "Enforce HTTPS" again.
 - Site loads at github.io but not the custom domain: the CNAME file and
